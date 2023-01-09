@@ -2,7 +2,6 @@ import "./Header.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Text, Divider, IconButton, useColorMode } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { store } from "../../../store/store";
 import { useEffect, useState } from "react";
 
 

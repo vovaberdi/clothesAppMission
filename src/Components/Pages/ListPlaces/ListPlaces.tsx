@@ -1,24 +1,23 @@
 import { Box, Container, SimpleGrid, Wrap } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Vication from "../../../models/Clothes";
 import Cards2 from "../../Card/Card2";
 import "./ListPlaces.css";
 import ReactPaginate from "react-paginate";
+import {Clothing} from "../../../models/Types";
 
 const PER_PAGE = 8;
 
 function ListPlaces(): JSX.Element {
 
-    const [vication, setVication] = useState<Vication[]>([]);    
+    const [clothes, setClothes] = useState<Clothing[]>([]);    
 
-    const token = localStorage.getItem('token');
     useEffect(() => {
         const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
         axios.get(url)
        .then((response) => {console.log(response.data);
   
-        setVication(response.data);
+        setClothes(response.data);
   
        }).catch((error) => {console.log("error", error);});
    }, []);
@@ -31,7 +30,7 @@ function ListPlaces(): JSX.Element {
                 
             <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
             
-                {vication.map(item=> <Cards2 key={item.id} id={item.id} type={item.type} color={item.color} size={item.size} brand={item.brand}/>)}
+                {clothes.map(item=> <Cards2 key={item.id} id={item.id} type={item.type} color={item.color} size={item.size} brand={item.brand}/>)}
                 
             </SimpleGrid>
             </Box>

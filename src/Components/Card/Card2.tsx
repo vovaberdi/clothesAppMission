@@ -1,23 +1,16 @@
-import { Badge, Box, Button, Flex, Image, Spacer,  } from "@chakra-ui/react";
+import { Badge, Box, Button, Image, } from "@chakra-ui/react";
 import "./Card2.css";
-// import EditModal from "./EditModal";
-import LikeButton from "./likeButton/likeButton";
-import { useEffect, useState } from "react";
-import { store } from "../../store/store";
-import Clothes from "../../models/Clothes";
+import {Clothing} from "../../models/Types";
 
 
 
 
 
 
-function Cards2(props:Clothes): JSX.Element {
+function Cards2(props:Clothing): JSX.Element {
 
 
   
-    useEffect(() => {
-      
-    }, []);
   
     const checkType = (props:any) => {
       if (props == "shoes") {
