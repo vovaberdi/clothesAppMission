@@ -3,14 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards2 from "../../Card/Card2";
 import "./ListPlaces.css";
-import ReactPaginate from "react-paginate";
 import {Clothing} from "../../../models/Types";
 
-const PER_PAGE = 8;
 
 function ListPlaces(): JSX.Element {
 
-    const [clothes, setClothes] = useState<Clothing[]>([]);    
+    const [clothes, setClothes] = useState<Clothing[]>([]); 
+    
 
     useEffect(() => {
         const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";

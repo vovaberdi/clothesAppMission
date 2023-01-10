@@ -1,6 +1,8 @@
 import { Badge, Box, Button, Image, } from "@chakra-ui/react";
 import "./Card2.css";
 import {Clothing} from "../../models/Types";
+import { useDispatch } from 'react-redux';
+import { addSet, selectSet, deselectSet } from '../../store/reduxFuc';
 
 
 
@@ -8,6 +10,22 @@ import {Clothing} from "../../models/Types";
 
 
 function Cards2(props:Clothing): JSX.Element {
+
+
+
+const dispatch = useDispatch();
+
+function handleAddSetClick(name: string) {
+  dispatch(addSet(name));
+}
+
+function handleSelectSetClick(id: number) {
+  dispatch(selectSet(id));
+}
+
+function handleDeselectSetClick(id: number) {
+  dispatch(deselectSet(id));
+}
 
 
   
@@ -75,9 +93,7 @@ function Cards2(props:Clothing): JSX.Element {
         <Box display='flex' mt='2' alignItems='center'>
           
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-          <Button colorScheme='green' size='xs'> Add </Button>
-
-            {/* {property.followers} followers */}
+          <Button onClick={()=>handleAddSetClick(props.brand)} colorScheme='green' size='xs'> Add </Button>
           </Box>
           <Box>
            <Box display="grid" gridGap={3} gridAutoFlow="row dense">
