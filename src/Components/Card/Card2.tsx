@@ -93,7 +93,7 @@ function handleDeselectSetClick(id: number) {
         <Box display='flex' mt='2' alignItems='center'>
           
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-          <Button onClick={()=>handleAddSetClick('Summer Outfit')} colorScheme='green' size='xs'> Add </Button>
+          <Button onClick={()=>handleAddSetClick(props.type)} colorScheme='green' size='xs'> Add </Button>
           </Box>
           <Box>
            <Box display="grid" gridGap={3} gridAutoFlow="row dense">

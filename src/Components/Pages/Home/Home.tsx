@@ -1,19 +1,31 @@
 import { Text, Box, Container, keyframes, Button } from '@chakra-ui/react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Clothing } from '../../../models/Types';
+import { setAllClothes } from '../../../store/reduxFuc';
 
 import "./Home.css";
 
-const animationKeyframes = keyframes`
-  0% { transform: scale(1) rotate(0); border-radius: 20%; }
-  25% { transform: scale(2) rotate(0); border-radius: 20%; }
-  50% { transform: scale(2) rotate(270deg); border-radius: 50%; }
-  75% { transform: scale(1) rotate(270deg); border-radius: 50%; }
-  100% { transform: scale(1) rotate(0); border-radius: 20%; }
-`;
-
 function Home(): JSX.Element {
 
-  const animation = `${animationKeyframes} 4s ease-in-out infinite`;
+
+  const dispatch = useDispatch();
+
+  function handleClothes(clothes: Clothing[]) {
+      dispatch(setAllClothes(clothes));
+  }
+
+
+
+  useEffect(() => {
+    const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
+    axios.get(url)
+   .then((response) => {handleClothes(response.data);
+
+   }).catch((error) => {console.log("error", error);});
+}, []);
 
 
    

@@ -34,3 +34,9 @@ export type RootState = {
    clothes: Clothing[];
    // Other state properties go here...
  };
+
+
+export const ADD_CLOTHING = 'ADD_CLOTHING';
+export const UPDATE_CLOTHES = 'UPDATE_CLOTHES';
+export const DELETE_CLOTHES = 'DELETE_CLOTHES';
+export const UPDATE_CLOTH = 'UPDATE_CLOTH';

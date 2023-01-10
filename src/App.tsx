@@ -13,7 +13,7 @@ function App() {
          <header><Header/></header>
          <h1>My Clothes</h1>
          <main><Main/></main>
-         </Provider>
+      </Provider>
     </div>
   );
 }

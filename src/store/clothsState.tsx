@@ -14,6 +14,7 @@ type ClothingAction = { type: 'ADD_CLOTHING'; clothing: Clothing };
 type Action = SetAction | ClothingAction;
 
 function sets(state: SetsState = [], action: SetAction): SetsState {
+  console.log('Before:', state);
   switch (action.type) {
     case 'ADD_SET':
       return [
@@ -50,14 +51,36 @@ function sets(state: SetsState = [], action: SetAction): SetsState {
   }
 }
 
-function clothes(state: ClothesState = [], action: ClothingAction): ClothesState {
+
+
+const initialState = {
+  clothes: []
+};
+
+export function clothes(state = initialState, action: any) {
   switch (action.type) {
     case 'ADD_CLOTHING':
-      return [...state, action.clothing];
+      return {
+        ...state,
+        clothes: action.payload,
+      };
     default:
+       console.log('ClothesBefore:', state, );
       return state;
   }
 }
+
+
+// function clothes(state: ClothesState = [], action: ClothingAction): ClothesState {
+  
+//   switch (action.type) {
+//     case 'ADD_CLOTHING':
+//       return [...state, action.clothing];
+//     default:
+//       console.log('ClothesBefore:', state, );
+//       return state;
+//   }
+// }
 
 const rootReducer = combineReducers({ sets, clothes });
 

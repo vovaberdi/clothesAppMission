@@ -1,22 +1,30 @@
-import { Box, Container, SimpleGrid, Wrap } from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards2 from "../../Card/Card2";
 import "./ListPlaces.css";
 import {Clothing} from "../../../models/Types";
+import { useDispatch } from "react-redux";
+import { setAllClothes } from "../../../store/reduxFuc";
 
 
 function ListPlaces(): JSX.Element {
 
     const [clothes, setClothes] = useState<Clothing[]>([]); 
+
+    const dispatch = useDispatch();
+
+    function handleClothes(clothes: Clothing[]) {
+        dispatch(setAllClothes(clothes));
+    }
     
 
     useEffect(() => {
         const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
         axios.get(url)
-       .then((response) => {console.log(response.data);
-  
+        .then((response) => {console.log(response.data);
         setClothes(response.data);
+        handleClothes(response.data)
   
        }).catch((error) => {console.log("error", error);});
    }, []);

@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { Clothing, ADD_CLOTHING} from '../models/Types';
+
 export function addSet(name: string) {
     return { type: 'ADD_SET', name };
   }
@@ -9,6 +12,15 @@ export function addSet(name: string) {
   export function deselectSet(id: number) {
     return { type: 'DESELECT_SET', id };
   }
+  
+
+ 
+  export function setAllClothes(clothes: Clothing[]) {
+    return { type: ADD_CLOTHING, payload: clothes };
+}
+
+
+
 
 
 
