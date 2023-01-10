@@ -2,13 +2,13 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards2 from "../../Card/Card2";
-import "./ListPlaces.css";
+import "./ClothesList.css";
 import {Clothing} from "../../../models/Types";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllClothes } from "../../../store/reduxFuc";
 
 
-function ListPlaces(): JSX.Element {
+function ClothesList(): JSX.Element {
 
     // const [clothes, setClothes] = useState<Clothing[]>([]); 
 
@@ -33,7 +33,7 @@ function ListPlaces(): JSX.Element {
 
  
     return (
-        <div className="ListPlaces">
+        <div className="ClothesList">
           
             <Box  display="flex"  alignItems="center" justifyContent="space-between">
                 
@@ -44,13 +44,11 @@ function ListPlaces(): JSX.Element {
             </SimpleGrid>
             </Box>
          
-
-
         </div>
     );
 }
 
-export default ListPlaces;
+export default ClothesList;
 
 
 
