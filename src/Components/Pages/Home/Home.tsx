@@ -3,12 +3,14 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Clothing } from '../../../models/Types';
 import { setAllClothes } from '../../../store/reduxFuc';
 
 import "./Home.css";
 
 function Home(): JSX.Element {
+  const navigat = useNavigate();
 
 
   const dispatch = useDispatch();
@@ -37,17 +39,17 @@ function Home(): JSX.Element {
                8 sets
             </Text>
             </Button> 
-            <Button mt={12} onClick={()=>alert("8 sets")}>
+            <Button mt={12} onClick={()=>navigat('/Shoes')}>
              <Text bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text' fontSize='5xl' fontWeight='extrabold'>
                11 shoes
             </Text>
             </Button> 
-            <Button mt={12} onClick={()=>alert("8 sets")}>
+            <Button mt={12} onClick={()=>navigat('/Shirt')}>
              <Text bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text' fontSize='5xl' fontWeight='extrabold'>
                12 shirts
             </Text>
             </Button> 
-            <Button mt={12} onClick={()=>alert("8 sets")}>
+            <Button mt={12} onClick={()=>navigat('/Pants')}>
              <Text bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text' fontSize='5xl' fontWeight='extrabold'>
                12 pants
             </Text>
