@@ -1,17 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { Clothing, ADD_CLOTHING} from '../models/Types';
 
-export function addSet(name: string) {
-    return { type: 'ADD_SET', name };
-  }
+// export function addSet(name: string) {
+//     return { type: 'ADD_SET', name };
+//   }
   
-  export function selectSet(id: number) {
-    return { type: 'SELECT_SET', id };
-  }
+//   export function selectSet(id: number) {
+//     return { type: 'SELECT_SET', id };
+//   }
   
-  export function deselectSet(id: number) {
-    return { type: 'DESELECT_SET', id };
-  }
+//   export function deselectSet(id: number) {
+//     return { type: 'DESELECT_SET', id };
+//   }
   
 
  

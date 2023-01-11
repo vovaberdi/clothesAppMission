@@ -94,8 +94,8 @@ interface IClothing {
   // timestamp: number;
 }
 interface ISet {
-  id: number;
-  name: string;
+  // id: number;
+  // name: string;
   items: IClothing[];
 }
 
@@ -105,7 +105,7 @@ export const addClothing = (clothing: IClothing[]) => {
     clothing
   }
 }
-export const addSet = (set: ISet) => {
+export const addSet = (set: ISet[]) => {
   return {
     type: 'ADD_SET_NEW',
     set

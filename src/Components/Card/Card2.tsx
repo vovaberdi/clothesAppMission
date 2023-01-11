@@ -2,7 +2,7 @@ import { Badge, Box, Button, Image, } from "@chakra-ui/react";
 import "./Card2.css";
 import {Clothing} from "../../models/Types";
 import { useDispatch, useSelector } from 'react-redux';
-import { addSet, selectSet, deselectSet } from '../../store/reduxFuc';
+// import { addSet, selectSet, deselectSet } from '../../store/reduxFuc';
 import { addClothing } from "../../store/clothsState";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -79,13 +79,13 @@ function handleAddSetClick(clothing: IClothing) {
   console.log(myothes)
 }
 
-function handleSelectSetClick(id: number) {
-  dispatch(selectSet(id));
-}
+// function handleSelectSetClick(id: number) {
+//   dispatch(selectSet(id));
+// }
 
-function handleDeselectSetClick(id: number) {
-  dispatch(deselectSet(id));
-}
+// function handleDeselectSetClick(id: number) {
+//   dispatch(deselectSet(id));
+// }
 
 
   
