@@ -1,10 +1,13 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Clothing } from "../../../models/Types";
 import Cards2 from "../../Card/Card2";
 import "./shoes.css";
 
 function Shoes(): JSX.Element {
+    const navigate = useNavigate();
+
 
 
     const myShoes:Clothing[] = useSelector((state: any) => state.clothes.clothes);

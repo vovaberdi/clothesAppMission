@@ -19,13 +19,13 @@ export class Set{
    public id:number;
    public name:string;
    public clothingIds:[];
-   public selected:boolean;
+   public timeStamp:Date= new Date();
 
    public constructor(set:Set) {
       this.id = set.id;
       this.name = set.name;
       this.clothingIds = set.clothingIds;
-      this.selected = set.selected;
+      this.timeStamp = set.timeStamp;
    }
 }
 

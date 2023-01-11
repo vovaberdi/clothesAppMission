@@ -17,7 +17,7 @@ function Set({ set, clothes, onSelect, onDeselect }: Props): JSX.Element {
 
   return (
     <div className="set">
-      <h2>{set.name}</h2>
+      {/* <h2>{set.name}</h2>
       <button onClick={() => (set.selected ? onDeselect(set.id) : onSelect(set.id))}>
         {set.selected ? 'Deselect' : 'Select'}
       </button>
@@ -25,7 +25,7 @@ function Set({ set, clothes, onSelect, onDeselect }: Props): JSX.Element {
         {clothingItems.map(clothing => (
           <Cards2 key={clothing?.id} id={0} type={''} color={''} size={''} brand={''}  />
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
