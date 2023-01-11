@@ -2,10 +2,12 @@ import { Text, Box, Container, keyframes, Button } from '@chakra-ui/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Clothing } from '../../../models/Types';
+import { deleteAllItems } from '../../../store/clothsState';
 import { setAllClothes } from '../../../store/reduxFuc';
+import store from '../../../store/store';
 
 import "./Home.css";
 
@@ -18,6 +20,20 @@ function Home(): JSX.Element {
   function handleClothes(clothes: Clothing[]) {
       dispatch(setAllClothes(clothes));
   }
+
+  const myClothes:Clothing[] = useSelector((state: any) => state.clothingReducer.clothing);
+
+  const saveToLocalStorage = (myClothes:Clothing[]) => {
+    localStorage.setItem(`clothing_${myClothes[0].id}`, JSON.stringify(myClothes));
+  };
+
+  useEffect(() => {
+    if (myClothes.length === 3) {
+      saveToLocalStorage(myClothes);
+      store.dispatch(deleteAllItems())
+    }
+
+  }, [myClothes]);
 
 
 
@@ -34,7 +50,7 @@ function Home(): JSX.Element {
     return (
         <div className="Home">
              <Container   alignItems="center" justifyContent="center">
-             <Button  mt={12} onClick={()=>alert("8 sets")}>
+             <Button  mt={12} onClick={()=>navigate('/SetList')}>
              <Text bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text' fontSize='5xl' fontWeight='extrabold'>
                8 sets
             </Text>

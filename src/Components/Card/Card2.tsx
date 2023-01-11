@@ -51,7 +51,17 @@ function Cards2(props:Clothing): JSX.Element {
     } 
   }
   const myClothes:Clothing[] = useSelector((state: any) => state.clothingReducer.clothing);
-  const myothes:Clothing[] = useSelector((state: any) => state);
+  const AllClothes:Clothing[] = useSelector((state: any) => state);
+
+  // const saveToLocalStorage = (myClothes:Clothing[]) => {
+  //   localStorage.setItem('clothing', JSON.stringify(myClothes));
+  // };
+
+  // useEffect(() => {
+  //   if (myClothes.length === 3) {
+  //     saveToLocalStorage(myClothes);
+  //   }
+  // }, [myClothes]);
 
 
   const startShoes = (clothing:IClothing) => {
@@ -68,6 +78,7 @@ function Cards2(props:Clothing): JSX.Element {
       navigate('/Home') : navigate('/Shoes')
     } 
    console.log(myClothes)
+  //  dispatch(addSet([myClothes]));
   }
 
 
@@ -76,26 +87,16 @@ const dispatch = useDispatch();
 function handleAddSetClick(clothing: IClothing) {
   dispatch(addClothing([clothing]));
   startShoes(clothing)
-  console.log(myothes)
+  console.log(AllClothes)
 }
 
-// function handleSelectSetClick(id: number) {
-//   dispatch(selectSet(id));
-// }
-
-// function handleDeselectSetClick(id: number) {
-//   dispatch(deselectSet(id));
-// }
-
-
-  
   
     const checkType = (props:any) => {
-      if (props == "shoes") {
+      if (props === "shoes") {
         return (
          "https://images.pexels.com/photos/12725055/pexels-photo-12725055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         )
-      } else if (props == "shirt") {
+      } else if (props === "shirt") {
         return (
           "https://images.pexels.com/photos/6461400/pexels-photo-6461400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         )

@@ -105,12 +105,11 @@ export const addClothing = (clothing: IClothing[]) => {
     clothing
   }
 }
-export const addSet = (set: ISet[]) => {
+export const deleteAllItems = () => {
   return {
-    type: 'ADD_SET_NEW',
-    set
-  }
-}
+    type: 'DELETE_ALL_ITEMS'
+  };
+};
 
 // reducer.ts
 interface IState {
@@ -131,15 +130,15 @@ const clothingReducer = (state = initialStatei, action: any) => {
         ...state,
         clothing: [...state.clothing, ...action.clothing]
       };
-    case 'ADD_SET_NEW':
+      case 'DELETE_ALL_ITEMS':
         return {
           ...state,
-          sets: [...state.sets, action.set]
+          clothing: []
         };
-    default:
-      return state;
-  }
-};
+      default:
+        return state;
+    }
+  };
 
 // export default clothingReducer;
 
