@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from "redux";
-import { Set, Clothing } from '../models/Types';
+import { MySet, Clothing } from '../models/Types';
 
-type SetsState = Set[];
+type SetsState = MySet[];
 type ClothesState = Clothing[];
 
 type SetAction =

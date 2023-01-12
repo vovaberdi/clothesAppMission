@@ -1,5 +1,9 @@
 
+import { Box, SimpleGrid } from "@chakra-ui/react";
+import _ from "lodash";
 import { useEffect } from "react";
+import { MySet } from "../../../models/Types";
+import Sets from "./Set";
 import "./setList.css";
 
 function SetList(): JSX.Element {
@@ -23,20 +27,51 @@ function SetList(): JSX.Element {
      for (let i = 0, len = localStorage.length; i < len; i++) {
         let myKey:any = localStorage.key(i);
         let temp = localStorage.getItem(myKey) || '{}';
-        temp.length > 5 ?
-        temp = JSON.parse(temp) :
-        console.log(temp);
-        console.log(temp);
-
+        temp.length > 10 ?
+        storedSets.push(JSON.parse(temp)) :
+        console.log(temp);        
   }
 }
 
+interface MyItem {
+  /* properties of your object*/
+}
+
+interface MyArray {
+  id: number;
+  brand: string;
+  type: string;
+  size: string;
+  color: string;
+}
+  
+
+    let storedSets: MySet[] = [];  
+    console.log("arr", storedSets)  
+
+    const check = (storedSets:MySet[]) =>{
+         storedSets.map((item:any) =>{
+          item.map((item: any) =>{
+            console.log("myitem:", item)
+          })
+         })
+    }
+    check(storedSets)
+
+
+
     return (
         <div className="setList">
-             {/* {sets.map(set => (
-                  <Set key={set.id} set={set} clothes={clothes} onSelect={onSelect} onDeselect={onDeselect} />
-             ))}; */}
+
+               <Box  display="flex"  alignItems="center" justifyContent="space-between">
+                
+                <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
+                
+                 <Sets id={0} brand={""} type={""} size={""} color={""} />
+                </SimpleGrid>
+                </Box> 
 			
+              
         </div>
     );
 }

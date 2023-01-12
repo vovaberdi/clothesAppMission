@@ -15,25 +15,21 @@ export class Clothing{
    }
 }
 
-export class Set{
-   public id:number;
-   public name:string;
-   public clothingIds:[];
-   public timeStamp:Date= new Date();
+export class MySet{
+  public id: number;
+  public brand: string;
+  public type: string;
+  public size: string;
+  public color: string;
 
-   public constructor(set:Set) {
-      this.id = set.id;
-      this.name = set.name;
-      this.clothingIds = set.clothingIds;
-      this.timeStamp = set.timeStamp;
+   public constructor(myset:MySet) {
+      this.id = myset.id;
+      this.brand = myset.brand;
+      this.type = myset.type;
+      this.size = myset.size;
+      this.color = myset.color;
    }
 }
-
-export type RootState = {
-   sets: Set[];
-   clothes: Clothing[];
-   // Other state properties go here...
- };
 
 
 export const ADD_CLOTHING = 'ADD_CLOTHING';
