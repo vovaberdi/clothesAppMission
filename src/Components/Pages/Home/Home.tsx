@@ -25,12 +25,15 @@ function Home(): JSX.Element {
 
   console.log("nonsence:", setu);
 
+
   const saveToLocalStorage = (myClothes:Clothing[]) => {
     localStorage.setItem(`clothing_${myClothes[0].id}`, JSON.stringify(myClothes));
   };
 
+  
+
   const handleClothes =(clothes: Clothing[]) => {
-    items.length < 1 && sets < 1 ?
+    items.length < 1 ? 
     dispatch(setAllClothes(clothes))
     :
     console.log("items exist");

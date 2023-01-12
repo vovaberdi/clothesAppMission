@@ -21,15 +21,16 @@ function SetList(): JSX.Element {
 
   useEffect(()=>{
     getSets()
+    abb()
   },[])
 
-  const getSets = () => {
+ const getSets = () => {
      for (let i = 0, len = localStorage.length; i < len; i++) {
         let myKey:any = localStorage.key(i);
         let temp = localStorage.getItem(myKey) || '{}';
         temp.length > 10 ?
         storedSets.push(JSON.parse(temp)) :
-        console.log(temp);        
+        console.log(temp);       
   }
 }
 
@@ -46,17 +47,26 @@ interface MyArray {
 }
   
 
-    let storedSets: MySet[] = [];  
+    let storedSets: any[] = [];  
     console.log("arr", storedSets)  
 
-    const check = (storedSets:MySet[]) =>{
-         storedSets.map((item:any) =>{
-          item.map((item: any) =>{
-            console.log("myitem:", item)
-          })
-         })
+    const abb = () =>{
+      for(let i =0; i < storedSets.length; i++){
+        for(let j =0; j < 3; j++){
+          console.log("consolSys:", storedSets[i][j])
+        }
+      }
     }
-    check(storedSets)
+      
+
+    // const check = (storedSets:MySet[]) =>{
+    //      storedSets.map((item:any) =>{
+    //       item.map((item: any) =>{
+    //         console.log("myitem:", item)
+    //       })
+    //      })
+    // }
+    // check(storedSets)
 
 
 

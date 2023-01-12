@@ -60,12 +60,12 @@ type ClothingAction = { type: 'ADD_CLOTHING'; clothing: Clothing };
 //   timestamp?: Date;
 //   selected?: boolean;
 // }
-// const setu = localStorage.getItem('clothing');
 
 
 // const numberOfSets = setu.filter((set:any) => set.type === 'set').length;
+const length = localStorage.length;
 
-const initialStateSets = { count: 0 };
+const initialStateSets = { count: length-1 };
 
 export function setsReducer(state = initialStateSets, action:any) {
     switch (action.type) {
