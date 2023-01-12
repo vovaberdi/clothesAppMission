@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, propNames, SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards2 from "../../Card/Card2";
@@ -18,7 +18,7 @@ function ClothesList(): JSX.Element {
     //     dispatch(setAllClothes(clothes));
     // }
     const myClothes:Clothing[] = useSelector((state: any) => state.clothes.clothes);
-
+    console.log(myClothes)
 
 //     useEffect(() => {
 //         const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
@@ -39,7 +39,7 @@ function ClothesList(): JSX.Element {
                 
             <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
             
-                {myClothes.map(item=> <Cards2 key={item.id} id={item.id} type={item.type} color={item.color} size={item.size} brand={item.brand}/>)}
+                {myClothes.map(item=> <Cards2 key={item.id} id={item.id} type={item.type} color={item.color} size={item.size}  brand={item.brand}/>)}
                 
             </SimpleGrid>
             </Box>

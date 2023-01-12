@@ -4,14 +4,14 @@ import { MySet, Clothing } from '../models/Types';
 type SetsState = MySet[];
 type ClothesState = Clothing[];
 
-type SetAction =
-  | { type: 'ADD_SET'; name: string , clothingIds: number}
-  | { type: 'SELECT_SET'; id: number }
-  | { type: 'DESELECT_SET'; id: number };
+// type SetAction =
+//   | { type: 'ADD_SET'; name: string , clothingIds: number}
+//   | { type: 'SELECT_SET'; id: number }
+//   | { type: 'DESELECT_SET'; id: number };
 
 type ClothingAction = { type: 'ADD_CLOTHING'; clothing: Clothing };
 
-type Action = SetAction | ClothingAction;
+// type Action = SetAction | ClothingAction;
 
 // function sets(state: SetsState = [], action: SetAction): SetsState {
 //   console.log('Before:', state);
@@ -51,7 +51,32 @@ type Action = SetAction | ClothingAction;
 //   }
 // }
 
+// interface Clothing {
+//   id: number;
+//   color: string;
+//   size: string;
+//   type: string;
+//   brand?: string;
+//   timestamp?: Date;
+//   selected?: boolean;
+// }
+// const setu = localStorage.getItem('clothing');
 
+
+// const numberOfSets = setu.filter((set:any) => set.type === 'set').length;
+
+const initialStateSets = { count: 0 };
+
+export function setsReducer(state = initialStateSets, action:any) {
+    switch (action.type) {
+        case 'ADD_SET':
+            return { ...state, count: state.count + 1 };
+        case 'REMOVE_SET':
+            return { ...state, count: state.count - 1 };
+        default:
+            return state;
+    }
+}
 
 const initialState = {
   clothes: []
@@ -64,6 +89,8 @@ export function clothes(state = initialState, action: any) {
         ...state,
         clothes: action.payload,
       };
+      case 'REMOVE_CLOTHING':
+        return { clothes: state.clothes.filter((clothing:any) => clothing.id !== action.payload.clothingId) };
     default:
        console.log('ClothesBefore:', state, );
       return state;
@@ -91,7 +118,6 @@ interface IClothing {
   type: string;
   size: string;
   color: string;
-  // timestamp: number;
 }
 interface ISet {
   // id: number;
@@ -142,7 +168,7 @@ const clothingReducer = (state = initialStatei, action: any) => {
 
 // export default clothingReducer;
 
-const rootReducer = combineReducers({ clothingReducer, clothes });
+const rootReducer = combineReducers({ clothingReducer, clothes, setsReducer });
 
 export default rootReducer;
 

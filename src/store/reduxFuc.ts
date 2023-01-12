@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { Clothing, ADD_CLOTHING} from '../models/Types';
+
+import { Clothing, ADD_CLOTHING, REMOVE_CLOTHING, ADD_SET, REMOVE_SET} from '../models/Types';
 
 // export function addSet(name: string) {
 //     return { type: 'ADD_SET', name };
@@ -12,13 +12,30 @@ import { Clothing, ADD_CLOTHING} from '../models/Types';
 //   export function deselectSet(id: number) {
 //     return { type: 'DESELECT_SET', id };
 //   }
-  
+
 
  
   export function setAllClothes(clothes: Clothing[]) {
     return { type: ADD_CLOTHING, payload: clothes };
 }
 
+
+export function removeClothing(clothingId: number) {
+    return { type: REMOVE_CLOTHING, payload: { clothingId }
+    }
+}
+
+export function addSet() {
+    return {
+        type: ADD_SET
+    }
+}
+
+export function removeSet() {
+    return {
+        type: REMOVE_SET
+    }
+}
 
 
 

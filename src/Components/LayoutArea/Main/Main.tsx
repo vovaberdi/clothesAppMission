@@ -9,8 +9,8 @@ import ClothesList from "../../Pages/ClothesList/ClothesList";
 import SetList from "../../Pages/mySets/setList";
 
 function Main(): JSX.Element {
+
     
-    const user = false;
     return (
         <div className="Main">
 			<Routes>

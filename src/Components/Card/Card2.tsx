@@ -6,14 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addClothing } from "../../store/clothsState";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { removeClothing } from "../../store/reduxFuc";
 
 
 
 
 function Cards2(props:Clothing): JSX.Element {
 
-  const [visitedPages, setVisitedPages] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
 
   interface IClothing {
@@ -22,47 +23,36 @@ function Cards2(props:Clothing): JSX.Element {
     type: string;
     size: string;
     color: string;
-    // timestamp:number;
   }
-  // new Date().toLocaleString()
 
+ 
 
+  class ClothingWithDesign extends Clothing {
+    timestamp: Date;
+    selected: boolean;
+    constructor(props: {id:number, brand:string, type:string, color: string, size: string, timestamp: Date, selected: boolean }) {
+        super(props);
+        this.timestamp = props.timestamp;
+        this.selected = props.selected;
+    }
+}
+
+   const clothingWithDesign = new ClothingWithDesign({...props, selected: true, timestamp: new Date()});
   
-  const startShirt = (clothing:IClothing) => {
-    if(clothing.type == "shirt") {
-      navigate('/Shoes')
-    } 
-    if (clothing.type =="shoes") {
-      navigate('/Pants') 
-    } 
-    if (clothing.type =="pants") {
-        navigate('/Home')
-    } 
-  }
-  const startPants = (clothing:IClothing) => {
-    if(clothing.type == "pants") {
-      navigate('/Shirt')
-    } 
-    if (clothing.type =="shirt") {
-      navigate('/Shoes') 
-    } 
-    if (clothing.type =="shoes") {
-        navigate('/Home')
-    } 
-  }
+
   const myClothes:Clothing[] = useSelector((state: any) => state.clothingReducer.clothing);
   const AllClothes:Clothing[] = useSelector((state: any) => state);
 
-  // const saveToLocalStorage = (myClothes:Clothing[]) => {
-  //   localStorage.setItem('clothing', JSON.stringify(myClothes));
-  // };
+  const saveToLocalStorage = (myClothes:Clothing[]) => {
+    localStorage.setItem('clothing', JSON.stringify(myClothes));
+  };
 
-  // useEffect(() => {
-  //   if (myClothes.length === 3) {
-  //     saveToLocalStorage(myClothes);
-  //   }
-  // }, [myClothes]);
-
+  useEffect(() => {
+    if (myClothes.length === 3) {
+      saveToLocalStorage(myClothes);
+    }
+  }, [myClothes]);
+ 
 
   const startShoes = (clothing:IClothing) => {
     if(clothing.type === "shoes") {
@@ -78,14 +68,14 @@ function Cards2(props:Clothing): JSX.Element {
       navigate('/Home') : navigate('/Shoes')
     } 
    console.log(myClothes)
-  //  dispatch(addSet([myClothes]));
   }
 
 
-const dispatch = useDispatch();
 
-function handleAddSetClick(clothing: IClothing) {
+
+function handleAddSetClick(clothing: ClothingWithDesign) {
   dispatch(addClothing([clothing]));
+  dispatch(removeClothing(clothing.id))
   startShoes(clothing)
   console.log(AllClothes)
 }
@@ -111,7 +101,7 @@ function handleAddSetClick(clothing: IClothing) {
     imageUrl: `${checkType(props.type)}`,
     type: `${props.type}`,
     color: ` color : ${props.color}`,
-    size: ` size : ${props.size}`,
+    size: ` size : ${props.size}`
   }
     return (
         <div className='card-container'>
@@ -154,7 +144,7 @@ function handleAddSetClick(clothing: IClothing) {
         <Box display='flex' mt='2' alignItems='center'>
           
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-            <Button ml='12rem'  onClick={()=>handleAddSetClick(props)} colorScheme='green' size='xs'> Add </Button>
+            <Button ml='12rem'  onClick={()=>handleAddSetClick(clothingWithDesign)} colorScheme='green' size='xs'> Add </Button>
           </Box>
           <Box>
            <Box display="grid" gridGap={3} gridAutoFlow="row dense">

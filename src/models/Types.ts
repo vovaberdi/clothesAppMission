@@ -33,6 +33,7 @@ export class MySet{
 
 
 export const ADD_CLOTHING = 'ADD_CLOTHING';
-export const UPDATE_CLOTHES = 'UPDATE_CLOTHES';
+export const ADD_SET = 'ADD_SET';
+export const REMOVE_SET = 'REMOVE_SET';
 export const DELETE_CLOTHES = 'DELETE_CLOTHES';
-export const UPDATE_CLOTH = 'UPDATE_CLOTH';
+export const REMOVE_CLOTHING = 'REMOVE_CLOTHING';
