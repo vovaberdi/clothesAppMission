@@ -2,6 +2,8 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { Clothing } from "../../../models/Types";
 import Cards2 from "../../Card/Card2";
+import SortingComponent from "../../Card/Sort/Sort";
+import Sort from "../../Card/Sort/Sort";
 import "./pants.css";
 
 function Pants(): JSX.Element {
@@ -14,10 +16,16 @@ function Pants(): JSX.Element {
     const type = "pants";
       
     const filteredItems = myShoes.filter(item => type.includes(item.type));
-    
-    console.log(filteredItems);
+
+    const userchoice:Clothing = useSelector((state: any) => state.clothingReducer.clothing[0]);
+
+ 
+    // console.log(filteredItems);
     return (
         <div className="pants">
+
+                  <SortingComponent items={filteredItems} userChoice={userchoice} />
+
 
                 <Box  display="flex"  alignItems="center" justifyContent="space-between">
                 

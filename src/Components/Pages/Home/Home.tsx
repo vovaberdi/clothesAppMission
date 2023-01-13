@@ -100,7 +100,6 @@ function Home(): JSX.Element {
                {filteredItems3.length} - Pants
             </Text>
             </Button> 
-      
      
             </Container>
         </div>

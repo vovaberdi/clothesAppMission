@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Clothing } from "../../../models/Types";
 import Cards2 from "../../Card/Card2";
+import SortingComponent from "../../Card/Sort/Sort";
+import Sort from "../../Card/Sort/Sort";
 import "./shoes.css";
 
 function Shoes(): JSX.Element {
-    const navigate = useNavigate();
 
 
 
@@ -17,19 +18,25 @@ function Shoes(): JSX.Element {
     const type = "shoes";
       
     const filteredItems = myShoes.filter(item => type.includes(item.type));
-    
-    console.log(filteredItems);
+
+    const userchoice:Clothing = useSelector((state: any) => state.clothingReducer.clothing[0]);
+
+
+  
 
     return (
         <div className="shoes">
-             <Box  display="flex"  alignItems="center" justifyContent="space-between">
+
+              <SortingComponent items={filteredItems} userChoice={userchoice} />
+
+               <Box  display="flex"  alignItems="center" justifyContent="space-between">
                 
-                <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
+                <SimpleGrid columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
                 
                     {filteredItems.map(item=> <Cards2 key={item.id} id={item.id} type={item.type} color={item.color} size={item.size} brand={item.brand}/>)}
                     
                 </SimpleGrid>
-                </Box>
+                </Box> 
 			
         </div>
     );

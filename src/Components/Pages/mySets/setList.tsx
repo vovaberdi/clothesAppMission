@@ -52,9 +52,9 @@ interface MyArray {
 
     const abb = () =>{
       for(let i =0; i < storedSets.length; i++){
-        for(let j =0; j < 3; j++){
-          console.log("consolSys:", storedSets[i][j])
-        }
+        // for(let j =0; j < 3; j++){
+          console.log("consolSys:", storedSets[i])
+        // }
       }
     }
       
