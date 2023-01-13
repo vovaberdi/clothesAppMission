@@ -1,4 +1,5 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Clothing } from "../../../models/Types";
@@ -9,6 +10,14 @@ import "./shoes.css";
 
 function Shoes(): JSX.Element {
 
+    const [userChoice, setUserChoice] = useState<Clothing>({
+        id:0,
+        size: '',
+        type: '',
+        color: '',
+        brand: '',
+        /* ... */
+      });
 
 
     const myShoes:Clothing[] = useSelector((state: any) => state.clothes.clothes);
@@ -22,18 +31,18 @@ function Shoes(): JSX.Element {
     const userchoice:Clothing = useSelector((state: any) => state.clothingReducer.clothing[0]);
 
 
+
   
 
     return (
         <div className="shoes">
 
-              <SortingComponent items={filteredItems} userChoice={userchoice} />
 
                <Box  display="flex"  alignItems="center" justifyContent="space-between">
                 
                 <SimpleGrid columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
                 
-                    {filteredItems.map(item=> <Cards2 key={item.id} id={item.id} type={item.type} color={item.color} size={item.size} brand={item.brand}/>)}
+                <SortingComponent items={filteredItems} userChoice={userchoice !== undefined ? userchoice : userChoice} />
                     
                 </SimpleGrid>
                 </Box> 
