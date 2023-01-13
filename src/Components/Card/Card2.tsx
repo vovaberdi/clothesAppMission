@@ -1,4 +1,4 @@
-import { Badge, Box, Button, Image, } from "@chakra-ui/react";
+import { Badge, Box, Button, Image, useToast, } from "@chakra-ui/react";
 import "./Card2.css";
 import {Clothing} from "../../models/Types";
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,8 @@ function Cards2(props:Clothing): JSX.Element {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const toast = useToast()
+
 
 
   interface IClothing {
@@ -36,10 +38,11 @@ function Cards2(props:Clothing): JSX.Element {
         this.selected = props.selected;
     }
 }
+   const toasti = () => {
+       toast({title: 'added successfully',status: 'success',isClosable: true,})
+    }
 
-   const clothingWithDesign = new ClothingWithDesign({...props, selected: true, timestamp: new Date()});
-  
-
+  const clothingWithDesign = new ClothingWithDesign({...props, selected: true, timestamp: new Date()});
   const myClothes:Clothing[] = useSelector((state: any) => state.clothingReducer.clothing);
   const AllClothes:Clothing[] = useSelector((state: any) => state);
 
@@ -74,6 +77,7 @@ function Cards2(props:Clothing): JSX.Element {
 
 
 function handleAddSetClick(clothing: ClothingWithDesign) {
+  toasti()
   dispatch(addClothing([clothing]));
   dispatch(removeClothing(clothing.id))
   startShoes(clothing)

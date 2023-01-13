@@ -1,14 +1,46 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
+// import { Button, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
 import { MySet } from "../../../models/Types";
 
 
-function Sets(props:MySet): JSX.Element {
 
-
+export const Sets: React.FC<{ objects: MySet[] }> = ({ objects }) => {
+  console.log("setCheack:", objects)
   return (
-    <div className="set">
+    <div>
+      {objects.map((object) => (
+        <div key={object.id}>
+          <h1>{object.brand}</h1>
+          <p>{object.type}</p>
+          <h1>{object.size}</h1>
+          <p>{object.color}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+// function Sets(props:MySet): JSX.Element {
 
-                  <Card>
+
+//   return (
+//     <div className="set">
+
+           
+//     </div>
+//   );
+// }
+
+// export default Sets;
+
+
+
+
+
+
+
+
+
+
+        {/* <Card>
                      <CardHeader>
                      <Heading size='md'>{props.brand}{props.type}</Heading>
                    </CardHeader>
@@ -18,9 +50,4 @@ function Sets(props:MySet): JSX.Element {
                    <CardFooter>
                      <Button onClick={()=>window.localStorage.clear()}>View here</Button>
                    </CardFooter>
-                 </Card>
-    </div>
-  );
-}
-
-export default Sets;
+                 </Card>  */}
