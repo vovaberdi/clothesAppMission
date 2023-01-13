@@ -4,12 +4,13 @@ import _ from "lodash";
 import { useEffect } from "react";
 import MySets from "./Set";
 import "./setList.css";
+import SingleSet from "./SingleSet";
 
 interface MyMerge {
   pants_brand: string;
   pants_color: string;
   pants_id: number;
-  pants_selected: true
+  pants_selected?: true
   pants_size: number;
   pants_timestamp: string;
   pants_type?: string;
@@ -86,7 +87,7 @@ const getSets = () => {
                 
                 <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
 
-                {merged.map((i) => <MySets pants_brand={i.pants_brand} pants_color={i.pants_color} pants_id={i.pants_id} pants_size={i.pants_size} pants_timestamp={i.pants_timestamp} shirt_brand={i.shirt_brand} shirt_color={i.shirt_color} shirt_id={i.shirt_id} shirt_size={i.shirt_size} shirt_timestamp={i.shirt_timestamp} shoes_brand={i.shoes_brand} shoes_color={i.shoes_color} shoes_id={i.shoes_id} shoes_size={i.shoes_size} shoes_timestamp={i.shoes_timestamp} pants_selected={true} />)}
+                {merged.map(i=> <SingleSet pants_brand={i.pants_brand} pants_color={i.pants_color} pants_id={i.pants_id} pants_size={i.pants_size} pants_timestamp={i.pants_timestamp} shirt_brand={i.shirt_brand} shirt_color={i.shirt_color} shirt_id={i.shirt_id} shirt_size={i.shirt_size} shirt_timestamp={i.shirt_timestamp} shoes_brand={i.shoes_brand} shoes_color={i.shoes_color} shoes_id={i.shoes_id} shoes_size={i.shoes_size} shoes_timestamp={i.shoes_timestamp} />)}
                 
                 </SimpleGrid>
                 </Box> 
