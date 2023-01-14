@@ -29,12 +29,21 @@ interface MyMerge {
   
 
 function SingleSet(props:MyMerge): JSX.Element {
+    console.log("props:", props)
     return (
         <div className="SingleSet">
-               <Card>
+               {!props && <div>Loading...</div>}
+               {<Card  borderWidth='1px' borderRadius='lg' overflow='hidden'>
+
+                <Text bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text' fontSize='5xl' fontWeight='extrabold'>
+                    Set
+                    </Text>
                      <CardHeader>
-                     <Heading size='md'>{props.shirt_brand}{props.shirt_size}{props.shirt_color}</Heading>
+                     <Heading size='md'>Heding</Heading>
                    </CardHeader>
+                   <CardBody>
+                     <Text><p>Shirt: </p> {props.shirt_brand}{props.shirt_size}{props.shirt_color}</Text>
+                   </CardBody>
                     <CardBody>
                      <Text>{props.pants_brand}{props.pants_size}{props.pants_color}</Text>
                    </CardBody>
@@ -44,7 +53,7 @@ function SingleSet(props:MyMerge): JSX.Element {
                    <CardFooter>
                      <Button onClick={()=>window.localStorage.clear()}>View here</Button>
                    </CardFooter>
-                 </Card>
+                 </Card>}
 			
         </div>
     );

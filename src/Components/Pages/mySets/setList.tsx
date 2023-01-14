@@ -1,8 +1,7 @@
 
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import _ from "lodash";
-import { useEffect } from "react";
-import MySets from "./Set";
+import { useEffect, useState } from "react";
 import "./setList.css";
 import SingleSet from "./SingleSet";
 
@@ -32,12 +31,12 @@ interface MyMerge {
 }
 
 function SetList(): JSX.Element {
+  const [data, setData] = useState<MyMerge[]>([]);
+
 
   useEffect(()=>{
     getSets()
-    abb()
-    check()
-    console.log("merged:", merged)
+    makeData()
   },[])
 
 const getSets = () => {
@@ -51,22 +50,11 @@ const getSets = () => {
 }
   
 
-    let storedSets: any[] = [];  
-    console.log("arr", storedSets)  
-
-    const abb = () =>{
-      for(let i =0; i < storedSets.length; i++){
-        // for(let j =0; j < 3; j++){
-          console.log("consolSys:", storedSets[i])
-        // }
-      }
-    }
-      
-
-    const check = () =>{
+    const makeData = () =>{
          storedSets.map((item:any) =>{ superMerge(item[0], item[1], item[2]) })
     }
-    let merged: MyMerge[] = []
+    let storedSets: any[] = [];  
+
 
     const superMerge = (obj1:any, obj2:any, obj3:any) =>{
 
@@ -76,8 +64,10 @@ const getSets = () => {
           object[newKey] = srcValue;
         };
         let mergedObj = _.mergeWith({}, obj1, obj2, obj3, mergeWithCustomizer);
-        merged.push(mergedObj);
+        setData(prevData => [...prevData, mergedObj])
     }
+
+
 
 
     return (
@@ -87,7 +77,8 @@ const getSets = () => {
                 
                 <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>
 
-                {merged.map(i=> <SingleSet pants_brand={i.pants_brand} pants_color={i.pants_color} pants_id={i.pants_id} pants_size={i.pants_size} pants_timestamp={i.pants_timestamp} shirt_brand={i.shirt_brand} shirt_color={i.shirt_color} shirt_id={i.shirt_id} shirt_size={i.shirt_size} shirt_timestamp={i.shirt_timestamp} shoes_brand={i.shoes_brand} shoes_color={i.shoes_color} shoes_id={i.shoes_id} shoes_size={i.shoes_size} shoes_timestamp={i.shoes_timestamp} />)}
+                {data.map(i=>
+                <SingleSet key={i.pants_id} pants_brand={i.pants_brand} pants_color={i.pants_color} pants_id={i.pants_id} pants_size={i.pants_size} pants_timestamp={i.pants_timestamp} shirt_brand={i.shirt_brand} shirt_color={i.shirt_color} shirt_id={i.shirt_id} shirt_size={i.shirt_size} shirt_timestamp={i.shirt_timestamp} shoes_brand={i.shoes_brand} shoes_color={i.shoes_color} shoes_id={i.shoes_id} shoes_size={i.shoes_size} shoes_timestamp={i.shoes_timestamp} />)}
                 
                 </SimpleGrid>
                 </Box> 
