@@ -39,15 +39,15 @@ function SetList(): JSX.Element {
     makeData()
   },[])
 
-const getSets = () => {
-        for (let i = 0, len = localStorage.length; i < len; i++) {
-           let myKey:any = localStorage.key(i);
+    
+   const getSets = () => {
+        const keys = Object.keys(localStorage).filter(key => key.startsWith("shoes"));
+        for (let i = 0, len = keys.length; i < len; i++) {
+           let myKey:any = keys[i];
            let temp = localStorage.getItem(myKey) || '{}';
-           temp.length > 10 ?
-           storedSets.push(JSON.parse(temp)) :
-           console.log(temp);       
+           storedSets.push(JSON.parse(temp)) 
        }
-}
+    }
   
 
     const makeData = () =>{

@@ -1,20 +1,18 @@
 
 import { Clothing, ADD_CLOTHING, REMOVE_CLOTHING, ADD_SET, REMOVE_SET} from '../models/Types';
 
-// export function addSet(name: string) {
-//     return { type: 'ADD_SET', name };
-//   }
-  
-//   export function selectSet(id: number) {
-//     return { type: 'SELECT_SET', id };
-//   }
-  
-//   export function deselectSet(id: number) {
-//     return { type: 'DESELECT_SET', id };
-//   }
 
-
-
+export const addClothing = (clothing: Clothing[]) => {
+    return {
+      type: 'ADD_CLOTHING_NEW',
+      clothing
+    }
+  }
+  export const deleteAllItems = () => {
+    return {
+      type: 'DELETE_ALL_ITEMS'
+    };
+  };
 
  
   export function setAllClothes(clothes: Clothing[]) {
@@ -44,20 +42,3 @@ export function removeSet() {
 
 
 
-  
-// import { useDispatch } from 'react-redux';
-// import { addSet, selectSet, deselectSet } from '../reduxFuc.ts';
-
-// const dispatch = useDispatch();
-
-// function handleAddSetClick(name: string) {
-//   dispatch(addSet(name));
-// }
-
-// function handleSelectSetClick(id: number) {
-//   dispatch(selectSet(id));
-// }
-
-// function handleDeselectSetClick(id: number) {
-//   dispatch(deselectSet(id));
-// }

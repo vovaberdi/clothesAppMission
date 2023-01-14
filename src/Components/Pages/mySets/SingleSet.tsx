@@ -30,11 +30,11 @@ interface MyMerge {
   
 
 function SingleSet(props:MyMerge): JSX.Element {
-    console.log("props:", props)
-    const toast = useToast()
+
+    const toast = useToast();
 
     const [active, setActive] = useState(true);
-
+    
     let timesPants = props.pants_timestamp;
     let timesShirt = props.shirt_timestamp;
     let timesShoes = props.shoes_timestamp;

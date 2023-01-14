@@ -1,48 +1,30 @@
 # Getting Started with Create React App
+ design only for mobile use!!! dark mode is recommended(can find in the left side of menu ) 
 
-https://dancing-toffee-36dbde.netlify.app
+-link to the webpage 
+
+https://celadon-macaron-f64148.netlify.app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
-
+### `npm i`
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-design  only for mobile use!!!
+-in this project i used redux and local storage for data managing that comes from api.
+-i use chakra-ui for the ui, dark/light mode optsion and some img from pexcels.
+-git for version control.
+-i used lodash for data manipulation.
+-i used sort and sort logics algorithms for understand user preference.
+-all kind of react good for navigation to specific location and position and back btn.
+-i guess there is more but i want to go asleep. it took me 4 days around 6h per day but i didn't count so its more or less...
+-the project is not 100% completed still need to small touche...
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

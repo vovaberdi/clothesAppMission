@@ -1,12 +1,10 @@
 import { Badge, Box, Button, Image, useToast, } from "@chakra-ui/react";
 import "./Card2.css";
-import {Clothing} from "../../models/Types";
+import {Clothing, ClothingWithDesign} from "../../models/Types";
 import { useDispatch, useSelector } from 'react-redux';
-// import { addSet, selectSet, deselectSet } from '../../store/reduxFuc';
-import { addClothing } from "../../store/clothsState";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { removeClothing } from "../../store/reduxFuc";
+import { addClothing, removeClothing } from "../../store/reduxFuc";
 
 
 
@@ -15,49 +13,17 @@ function Cards2(props:Clothing): JSX.Element {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const toast = useToast()
+  const toast = useToast();
 
-
-
-  interface IClothing {
-    id: number;
-    brand: string;
-    type: string;
-    size: string;
-    color: string;
-  }
-
- 
-
-  class ClothingWithDesign extends Clothing {
-    timestamp: Date;
-    selected: boolean;
-    constructor(props: {id:number, brand:string, type:string, color: string, size: string, timestamp: Date, selected: boolean }) {
-        super(props);
-        this.timestamp = props.timestamp;
-        this.selected = props.selected;
-    }
-}
    const toasti = () => {
        toast({title: 'added successfully',status: 'success',isClosable: true,})
     }
 
   const clothingWithDesign = new ClothingWithDesign({...props, selected: true, timestamp: new Date()});
   const myClothes:Clothing[] = useSelector((state: any) => state.clothingReducer.clothing);
-  const AllClothes:Clothing[] = useSelector((state: any) => state);
-
-  const saveToLocalStorage = (myClothes:Clothing[]) => {
-    localStorage.setItem('clothing', JSON.stringify(myClothes));
-  };
-
-  useEffect(() => {
-    if (myClothes.length === 3) {
-      saveToLocalStorage(myClothes);
-    }
-  }, [myClothes]);
  
 
-  const startShoes = (clothing:IClothing) => {
+  const startShoes = (clothing:Clothing) => {
     if(clothing.type === "shoes") {
       myClothes.length >= 2 ? 
       navigate('/Home') : navigate('/Shirt')
@@ -70,18 +36,14 @@ function Cards2(props:Clothing): JSX.Element {
       myClothes.length >= 2 ? 
       navigate('/Home') : navigate('/Shoes')
     } 
-   console.log(myClothes)
   }
-
-
 
 
 function handleAddSetClick(clothing: ClothingWithDesign) {
   toasti()
   dispatch(addClothing([clothing]));
-  dispatch(removeClothing(clothing.id))
-  startShoes(clothing)
-  console.log(AllClothes)
+  dispatch(removeClothing(clothing.id));
+  startShoes(clothing);
 }
 
   
