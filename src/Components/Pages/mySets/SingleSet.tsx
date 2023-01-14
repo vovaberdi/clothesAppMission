@@ -1,5 +1,6 @@
 import "./SingleSet.css";
-import { Button, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
+import { Badge, Button, Card, CardBody, CardFooter, CardHeader, Heading, Text, useToast } from "@chakra-ui/react";
+import { useState } from "react";
 
 
 interface MyMerge {
@@ -30,6 +31,9 @@ interface MyMerge {
 
 function SingleSet(props:MyMerge): JSX.Element {
     console.log("props:", props)
+    const toast = useToast()
+
+    const [active, setActive] = useState(true);
 
     let timesPants = props.pants_timestamp;
     let timesShirt = props.shirt_timestamp;
@@ -53,11 +57,19 @@ function SingleSet(props:MyMerge): JSX.Element {
      let stringIt = createdAt.toString();
      let dateOnly = stringIt.match(/^.*?(?=\sGMT)/g);
 
-     let makeSetTime = (maxTimestamp - minTimestamp);
+     let makeSetTime = (maxTimestamp - minTimestamp) / 1000;
 
      console.log(dateOnly)
 
+     const deleteSet = (props:MyMerge) => {
+        localStorage.removeItem(`shoes${props.shoes_id}`);
+        toasti()
+        setActive(!active);
+     }
 
+     const toasti = () => {
+        toast({title: 'deleted successfully',status: 'success',isClosable: true,})
+      }
     return (
         <div className="SingleSet">
                {!props && <div>Loading...</div>}
@@ -67,20 +79,26 @@ function SingleSet(props:MyMerge): JSX.Element {
                     Set
                     </Text>
                      <CardHeader>
-                     <Heading size='md'>set Creation :{dateOnly}</Heading>
-                     <Heading size='md'>time for Creation :{makeSetTime}</Heading>
+                     <Heading textAlign='start' size='md'><Badge borderRadius='full' px='2' colorScheme='teal'>Creation</Badge>{dateOnly}</Heading>
+                     <Heading textAlign='start' size='md'><Badge borderRadius='full' px='2' colorScheme='teal'>pickTime</Badge>{makeSetTime} sec</Heading>
                    </CardHeader>
                    <CardBody>
-                     <Text>{props.shirt_brand}{props.shirt_size}{props.shirt_color}</Text>
+                     <Text textAlign='start'><Badge borderRadius='full' px='2' colorScheme='teal'>Shirt:</Badge> {props.shirt_brand}</Text>
+                     <Text textAlign='start'><Badge borderRadius='full' px='2' colorScheme='teal'>color:</Badge>{props.shirt_color}</Text>
+                     <Text textAlign='start'> <Badge borderRadius='full' px='2' colorScheme='teal'>size:</Badge>{props.shirt_size}</Text>
                    </CardBody>
                     <CardBody>
-                     <Text>{props.pants_brand}{props.pants_size}{props.pants_color}</Text>
+                    <Text textAlign='start'><Badge borderRadius='full' px='2' colorScheme='teal'>Pants:</Badge> {props.pants_brand}</Text>
+                     <Text textAlign='start'><Badge borderRadius='full' px='2' colorScheme='teal'>color:</Badge>{props.pants_color}</Text>
+                     <Text textAlign='start'> <Badge borderRadius='full' px='2' colorScheme='teal'>size:</Badge>{props.pants_size}</Text>
                    </CardBody>
                    <CardBody>
-                     <Text>{props.shoes_brand}{props.shoes_size}{props.shoes_color}</Text>
+                   <Text textAlign='start'><Badge borderRadius='full' px='2' colorScheme='teal'>Shoes:</Badge> {props.shoes_brand}</Text>
+                     <Text textAlign='start'><Badge borderRadius='full' px='2' colorScheme='teal'>color:</Badge>{props.shoes_color}</Text>
+                     <Text textAlign='start'> <Badge borderRadius='full' px='2' colorScheme='teal'>size:</Badge>{props.shoes_size}</Text>
                    </CardBody>
                    <CardFooter>
-                     <Button onClick={()=>window.localStorage.clear()}>View here</Button>
+                     <Button ml='12rem' onClick={()=>deleteSet(props)}>❌</Button>
                    </CardFooter>
                  </Card>}
 			

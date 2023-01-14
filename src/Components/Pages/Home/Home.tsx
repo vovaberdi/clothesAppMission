@@ -26,8 +26,12 @@ function Home(): JSX.Element {
   console.log("nonsence:", setu);
 
 
+  const findShoes = (objects: Clothing[]) => {
+    return objects.find(obj => obj.type === "shoes");
+}
   const saveToLocalStorage = (myClothes:Clothing[]) => {
-    localStorage.setItem(`clothing_${myClothes[0].id}`, JSON.stringify(myClothes));
+    let firstObj = findShoes(myClothes);
+    localStorage.setItem(`${firstObj?.type}${firstObj?.id}`, JSON.stringify(myClothes));
   };
 
   
@@ -51,8 +55,6 @@ function Home(): JSX.Element {
   }, [myClothes]);
 
 
- 
-  
   useEffect(() => {
     const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
     axios.get(url)
@@ -60,12 +62,7 @@ function Home(): JSX.Element {
 
    }).catch((error) => {console.log("error", error);});
 }, []);
-  
 
-
-
- 
-   console.log("mylog:",items)
    const type1 = "shoes";
    const type2 = "shirt";
    const type3 = "spants";
@@ -74,9 +71,6 @@ function Home(): JSX.Element {
    const filteredItems2 = items.filter(item => type1.includes(item.type));
    const filteredItems3 = items.filter(item => type1.includes(item.type));
 
-
-
-   
     return (
         <div className="Home">
              <Container   alignItems="center" justifyContent="center">
