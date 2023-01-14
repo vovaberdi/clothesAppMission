@@ -65,11 +65,11 @@ function Home(): JSX.Element {
 
    const type1 = "shoes";
    const type2 = "shirt";
-   const type3 = "spants";
+   const type3 = "pants";
 
    const filteredItems1 = items.filter(item => type1.includes(item.type));
-   const filteredItems2 = items.filter(item => type1.includes(item.type));
-   const filteredItems3 = items.filter(item => type1.includes(item.type));
+   const filteredItems2 = items.filter(item => type2.includes(item.type));
+   const filteredItems3 = items.filter(item => type3.includes(item.type));
 
     return (
         <div className="Home">

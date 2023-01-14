@@ -10,27 +10,8 @@ import { setAllClothes } from "../../../store/reduxFuc";
 
 function ClothesList(): JSX.Element {
 
-    // const [clothes, setClothes] = useState<Clothing[]>([]); 
-
-    // const dispatch = useDispatch();
-
-    // function handleClothes(clothes: Clothing[]) {
-    //     dispatch(setAllClothes(clothes));
-    // }
+ 
     const myClothes:Clothing[] = useSelector((state: any) => state.clothes.clothes);
-    console.log(myClothes)
-
-//     useEffect(() => {
-//         const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
-//         axios.get(url)
-//         .then((response) => {
-//         setClothes(response.data);
-//         handleClothes(response.data)
-//         console.log(myClothes)
-//        }).catch((error) => {console.log("error", error);});
-//    }, []);
-
-
  
     return (
         <div className="ClothesList">

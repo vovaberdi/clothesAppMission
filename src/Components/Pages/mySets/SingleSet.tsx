@@ -62,6 +62,7 @@ function SingleSet(props:MyMerge): JSX.Element {
      console.log(dateOnly)
 
      const deleteSet = (props:MyMerge) => {
+        console.log(props)
         localStorage.removeItem(`shoes${props.shoes_id}`);
         toasti()
         setActive(!active);

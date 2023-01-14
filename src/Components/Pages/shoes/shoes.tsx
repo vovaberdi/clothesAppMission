@@ -1,5 +1,5 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Clothing } from "../../../models/Types";
@@ -19,20 +19,18 @@ function Shoes(): JSX.Element {
         /* ... */
       });
 
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
 
     const myShoes:Clothing[] = useSelector((state: any) => state.clothes.clothes);
-    // const myShoes:Clothing[] = useSelector((state: any) => 
-    // state.clothes.clothes.filter((cloth: Clothing) => cloth.type === state.filter));
 
     const type = "shoes";
       
     const filteredItems = myShoes.filter(item => type.includes(item.type));
 
     const userchoice:Clothing = useSelector((state: any) => state.clothingReducer.clothing[0]);
-
-
-
-  
 
     return (
         <div className="shoes">

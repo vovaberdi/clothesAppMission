@@ -14,6 +14,8 @@ import { Clothing, ADD_CLOTHING, REMOVE_CLOTHING, ADD_SET, REMOVE_SET} from '../
 //   }
 
 
+
+
  
   export function setAllClothes(clothes: Clothing[]) {
     return { type: ADD_CLOTHING, payload: clothes };
