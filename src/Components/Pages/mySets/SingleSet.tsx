@@ -30,6 +30,34 @@ interface MyMerge {
 
 function SingleSet(props:MyMerge): JSX.Element {
     console.log("props:", props)
+
+    let timesPants = props.pants_timestamp;
+    let timesShirt = props.shirt_timestamp;
+    let timesShoes = props.shoes_timestamp;
+
+    let date1 = new Date(timesPants);
+    let date2 = new Date(timesShirt);
+    let date3 = new Date(timesShoes);
+
+    let timestamps = [timesPants, timesShirt, timesShoes];
+    let timestampsInMs: number[] = [];
+
+     timestamps.forEach(timestamp => {
+     timestampsInMs.push(new Date(timestamp).getTime());
+    });
+
+     let minTimestamp = Math.min(...timestampsInMs);
+     let maxTimestamp = Math.max(...timestampsInMs);
+
+     let createdAt = new Date(minTimestamp); 
+     let stringIt = createdAt.toString();
+     let dateOnly = stringIt.match(/^.*?(?=\sGMT)/g);
+
+     let makeSetTime = (maxTimestamp - minTimestamp);
+
+     console.log(dateOnly)
+
+
     return (
         <div className="SingleSet">
                {!props && <div>Loading...</div>}
@@ -39,10 +67,11 @@ function SingleSet(props:MyMerge): JSX.Element {
                     Set
                     </Text>
                      <CardHeader>
-                     <Heading size='md'>Heding</Heading>
+                     <Heading size='md'>set Creation :{dateOnly}</Heading>
+                     <Heading size='md'>time for Creation :{makeSetTime}</Heading>
                    </CardHeader>
                    <CardBody>
-                     <Text><p>Shirt: </p> {props.shirt_brand}{props.shirt_size}{props.shirt_color}</Text>
+                     <Text>{props.shirt_brand}{props.shirt_size}{props.shirt_color}</Text>
                    </CardBody>
                     <CardBody>
                      <Text>{props.pants_brand}{props.pants_size}{props.pants_color}</Text>
