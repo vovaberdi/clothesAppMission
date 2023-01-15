@@ -34,5 +34,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 -the project is not 100% completed still need to small touche...
 
+menu bar : 
+1.light/dark mode.
+2.sets page.
+3.home page 
+
+home page :
+1. number of items(cloths, and sets) that you can choose render auto from redux.
+=>
+onClick(shoes,shirt,pants) let you choose items => and navigate you to next item 
+sort algorithm then sort by your preferences.
+when 3 items been choose set been crated with all items data, date of creation and time it took.
+
+
 
 
