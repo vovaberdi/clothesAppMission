@@ -1,10 +1,4 @@
 import { combineReducers, createStore } from "redux";
-import { MySet, Clothing } from '../models/Types';
-
-type SetsState = MySet[];
-type ClothesState = Clothing[];
-
-type ClothingAction = { type: 'ADD_CLOTHING'; clothing: Clothing };
 
 const keys = Object.keys(localStorage).filter(key => key.startsWith("shoes"));
 
@@ -56,8 +50,6 @@ interface ISet {
   // name: string;
   items: IClothing[];
 }
-
-
 
 interface IState {
   clothing: IClothing[];

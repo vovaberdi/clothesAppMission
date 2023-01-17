@@ -28,8 +28,8 @@ function Home(): JSX.Element {
        storedSets.push(JSON.parse(temp)) 
    }
 }
-  let storedSets: any[] = []; 
-  let setsIds :any[] = [];
+  const storedSets: any[] = []; 
+  const setsIds :any[] = [];
 
   const getIds = () => {
     storedSets.map((item) =>{  item.map((item1: any) => setsIds.push(item1.id))})
@@ -79,9 +79,9 @@ function Home(): JSX.Element {
    const type2 = "shirt";
    const type3 = "pants";
 
-   let filteredItems1 = items.filter(item => type1.includes(item.type));
-   let filteredItems2 = items.filter(item => type2.includes(item.type));
-   let filteredItems3 = items.filter(item => type3.includes(item.type));
+   const filteredItems1 = items.filter(item => type1.includes(item.type));
+   const filteredItems2 = items.filter(item => type2.includes(item.type));
+   const filteredItems3 = items.filter(item => type3.includes(item.type));
 
     return (
         <div className="Home">
