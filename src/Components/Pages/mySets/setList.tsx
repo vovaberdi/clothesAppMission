@@ -53,17 +53,17 @@ function SetList(): JSX.Element {
     const makeData = () =>{
          storedSets.map((item:any) =>{ superMerge(item[0], item[1], item[2]) })
     }
-    let storedSets: any[] = [];  
+    const storedSets: any[] = [];  
 
 
     const superMerge = (obj1:any, obj2:any, obj3:any) =>{
 
-        let mergeWithCustomizer = function(objValue: any, srcValue: any, key: string, object: { [x: string]: any; }, source: { type: string; }) {
+      const mergeWithCustomizer = function(objValue: any, srcValue: any, key: string, object: { [x: string]: any; }, source: { type: string; }) {
           let type = source.type + "_";
           let newKey = type + key;
           object[newKey] = srcValue;
         };
-        let mergedObj = _.mergeWith({}, obj1, obj2, obj3, mergeWithCustomizer);
+        const mergedObj = _.mergeWith({}, obj1, obj2, obj3, mergeWithCustomizer);
         setData(prevData => [...prevData, mergedObj])
     }
 
