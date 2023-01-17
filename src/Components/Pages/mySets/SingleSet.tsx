@@ -35,33 +35,33 @@ function SingleSet(props:MyMerge): JSX.Element {
 
     const [active, setActive] = useState(true);
     
-    let timesPants = props.pants_timestamp;
-    let timesShirt = props.shirt_timestamp;
-    let timesShoes = props.shoes_timestamp;
+    const timesPants = props.pants_timestamp;
+    const timesShirt = props.shirt_timestamp;
+    const timesShoes = props.shoes_timestamp;
 
-    let date1 = new Date(timesPants);
-    let date2 = new Date(timesShirt);
-    let date3 = new Date(timesShoes);
+    const date1 = new Date(timesPants);
+    const date2 = new Date(timesShirt);
+    const date3 = new Date(timesShoes);
 
-    let timestamps = [timesPants, timesShirt, timesShoes];
-    let timestampsInMs: number[] = [];
+    const timestamps = [timesPants, timesShirt, timesShoes];
+    const timestampsInMs: number[] = [];
 
      timestamps.forEach(timestamp => {
      timestampsInMs.push(new Date(timestamp).getTime());
     });
 
-     let minTimestamp = Math.min(...timestampsInMs);
-     let maxTimestamp = Math.max(...timestampsInMs);
+    const minTimestamp = Math.min(...timestampsInMs);
+    const maxTimestamp = Math.max(...timestampsInMs);
 
-     let createdAt = new Date(minTimestamp); 
-     let stringIt = createdAt.toString();
-     let dateOnly = stringIt.match(/^.*?(?=\sGMT)/g);
+    const createdAt = new Date(minTimestamp); 
+    const stringIt = createdAt.toString();
+    const dateOnly = stringIt.match(/^.*?(?=\sGMT)/g);
 
-     let makeSetTime = (maxTimestamp - minTimestamp) / 1000;
+    const makeSetTime = (maxTimestamp - minTimestamp) / 1000;
 
-     console.log(dateOnly)
+    console.log(dateOnly)
 
-     const deleteSet = (props:MyMerge) => {
+    const deleteSet = (props:MyMerge) => {
         console.log(props)
         localStorage.removeItem(`shoes${props.shoes_id}`);
         toasti()
