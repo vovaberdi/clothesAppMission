@@ -1,12 +1,10 @@
-import { Text, Box, Container, keyframes, Button } from '@chakra-ui/react';
+import { Text, Container, Button } from '@chakra-ui/react';
 import axios from 'axios';
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Clothing } from '../../../models/Types';
-import { deleteAllItems } from '../../../store/clothsState';
-import { addSet, setAllClothes } from '../../../store/reduxFuc';
+import { addSet, deleteAllItems, removeClothing, setAllClothes } from '../../../store/reduxFuc';
 import store from '../../../store/store';
 import "./Home.css";
 
@@ -21,13 +19,29 @@ function Home(): JSX.Element {
 
   const sets:number = useSelector((state: any) => state.setsReducer.count);
 
-  const setu = localStorage.getItem('clothing');
 
-  console.log("nonsence:", setu);
+  const getSets = () => {
+    const keys = Object.keys(localStorage).filter(key => key.startsWith("shoes"));
+    for (let i = 0, len = keys.length; i < len; i++) {
+      let myKey:any = keys[i];
+      let temp = localStorage.getItem(myKey) || '{}';
+       storedSets.push(JSON.parse(temp)) 
+   }
+}
+  const storedSets: any[] = []; 
+  const setsIds :any[] = [];
 
+  const getIds = () => {
+    storedSets.map((item) =>{  item.map((item1: any) => setsIds.push(item1.id))})
+    setsIds.map((id) => dispatch(removeClothing(id)))
+    }
 
+  const findShoes = (objects: Clothing[]) => {
+    return objects.find(obj => obj.type === "shoes");
+}
   const saveToLocalStorage = (myClothes:Clothing[]) => {
-    localStorage.setItem(`clothing_${myClothes[0].id}`, JSON.stringify(myClothes));
+    let firstObj = findShoes(myClothes);
+    localStorage.setItem(`${firstObj?.type}${firstObj?.id}`, JSON.stringify(myClothes));
   };
 
   
@@ -41,18 +55,18 @@ function Home(): JSX.Element {
 }
 
   useEffect(() => {
+    getSets()
+    getIds()
+    console.log(myClothes)
     if (myClothes.length === 3) {
       saveToLocalStorage(myClothes);
       dispatch(addSet())
-      console.log("sets:", sets)
       store.dispatch(deleteAllItems())
     }
 
   }, [myClothes]);
 
 
- 
-  
   useEffect(() => {
     const url = "https://run.mocky.io/v3/2d06d2c1-5a77-4ecd-843a-53247bcb0b94";
     axios.get(url)
@@ -60,23 +74,15 @@ function Home(): JSX.Element {
 
    }).catch((error) => {console.log("error", error);});
 }, []);
-  
 
-
-
- 
-   console.log("mylog:",items)
    const type1 = "shoes";
    const type2 = "shirt";
-   const type3 = "spants";
+   const type3 = "pants";
 
    const filteredItems1 = items.filter(item => type1.includes(item.type));
-   const filteredItems2 = items.filter(item => type1.includes(item.type));
-   const filteredItems3 = items.filter(item => type1.includes(item.type));
+   const filteredItems2 = items.filter(item => type2.includes(item.type));
+   const filteredItems3 = items.filter(item => type3.includes(item.type));
 
-
-
-   
     return (
         <div className="Home">
              <Container   alignItems="center" justifyContent="center">

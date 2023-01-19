@@ -31,6 +31,16 @@ export class MySet{
    }
 }
 
+export class ClothingWithDesign extends Clothing {
+   timestamp: Date;
+   selected: boolean;
+   constructor(props: {id:number, brand:string, type:string, color: string, size: string, timestamp: Date, selected: boolean }) {
+       super(props);
+       this.timestamp = props.timestamp;
+       this.selected = props.selected;
+   }
+}
+
 
 export const ADD_CLOTHING = 'ADD_CLOTHING';
 export const ADD_SET = 'ADD_SET';
