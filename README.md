@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 -in this project i used redux and local storage for data managing that comes from api.
 
--i use chakra-ui for the ui, dark/light mode optsion and some img from pexcels.
+-i use chakra-ui for the ui, dark/light mode option and some img from pexcels.
 
 -git for version control.
 
