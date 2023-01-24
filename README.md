@@ -1,22 +1,20 @@
 # Getting Started with Create React App
  design only for mobile use!!! dark mode is recommended(can find in the left side of menu ) 
 
--link to the webpage 
+-link to the webpage
 
 https://celadon-macaron-f64148.netlify.app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with Create React App.
 
-## Available Scripts
-
+Available Scripts
 In the project directory, you can run:
+
+=======
 ### `npm i`
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
--design  only for mobile use!!!
+-design only for mobile use!!!
 
 -in this project i used redux and local storage for data managing that comes from api.
 
@@ -34,18 +32,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 -the project is not 100% completed still need to small touche...
 
-menu bar : 
-1.light/dark mode.
-2.sets page.
-3.home page 
+menu bar : 1.light/dark mode. 2.sets page. 3.home page
 
 home page :
-1. number of items(cloths, and sets) that you can choose render auto from redux.
-=>
-onClick(shoes,shirt,pants) let you choose items => and navigate you to next item 
-sort algorithm then sort by your preferences.
-when 3 items been choose set been crated with all items data, date of creation and time it took.
 
-
-
-
+number of items(cloths, and sets) that you can choose render auto from redux. => onClick(shoes,shirt,pants) let you choose items => and navigate you to next item sort algorithm then sort by your preferences. when 3 items been choose set been crated with all items data, date of creation and time it took.
