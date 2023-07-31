@@ -1,39 +1,46 @@
 # Getting Started with Create React App
- design only for mobile use!!! dark mode is recommended(can find in the left side of menu ) 
+Mobile-Optimized Design for a Superior User Experience | Dark Mode Supported
+Welcome to our mobile-exclusive website, where seamless navigation and a sleek design ensure a delightful user experience. Embracing modern aesthetics, we recommend you explore our website in dark mode, conveniently accessible from the left side of the menu.
 
--link to the webpage
+Experience it Now: Mobile-Optimized Website
+Project Highlights:
+Powered by Create React App: This project was skillfully bootstrapped using Create React App, providing a solid foundation for a smooth and dynamic web experience.
 
-https://celadon-macaron-f64148.netlify.app
+Redux and Local Storage: Leveraging Redux and local storage, we efficiently manage data obtained from the API, ensuring a seamless browsing journey for our users.
 
-This project was bootstrapped with Create React App.
+Chakra UI for Enhanced UI: Our UI is thoughtfully designed with Chakra UI, providing a visually appealing and intuitive interface. The dark and light mode option enhances your viewing comfort.
 
-Available Scripts
-In the project directory, you can run:
+Git for Version Control: We utilize Git for meticulous version control, ensuring every development milestone is tracked and managed efficiently.
 
-=======
-### `npm i`
-### `npm start`
+Lodash for Data Manipulation: Our commitment to efficiency led us to employ Lodash, facilitating streamlined data manipulation for optimal performance.
 
--design only for mobile use!!!
+Sort and Logic Algorithms: To understand and cater to your preferences, we intelligently employ sort and logic algorithms, allowing us to provide personalized recommendations and sets.
 
--in this project i used redux and local storage for data managing that comes from api.
+Seamless Navigation: With a variety of intuitive navigation options, finding specific locations and positions has never been easier. Our user-friendly interface ensures a hassle-free browsing experience.
 
--i use chakra-ui for the ui, dark/light mode option and some img from pexcels.
+Menu Bar:
+Light/Dark Mode: Enhance your browsing experience by toggling between light and dark mode to suit your preferences.
 
--git for version control.
+Sets Page: Explore our exciting sets, thoughtfully curated for your convenience and style.
 
--i used lodash for data manipulation.
+Home Page: Discover the latest and trendiest collection of clothes and sets, all just a tap away.
 
--i used sort and sort logics algorithms for understand user preference.
+Home Page:
+Discover a world of endless possibilities as you step into our captivating Home Page:
 
--all kind of react good for navigation to specific location and position and back btn.
+Auto-Rendered Options: Experience convenience like never before, with a variety of clothes and sets auto-rendered from Redux. It's all about ease and style at your fingertips.
 
--i guess there is more. it took me 4 days around 6h per day but i didn't count so its more or less...
+Intuitive Item Selection: Choose your favorite items, be it shoes, shirts, or pants, with a simple tap, and let us guide you to the next item through our intelligent sorting algorithm.
 
--the project is not 100% completed still need to small touche...
+Personalized Recommendations: Our cutting-edge sorting algorithm learns from your preferences, ensuring that the items you love are presented first.
 
-menu bar : 1.light/dark mode. 2.sets page. 3.home page
+Create Your Perfect Set: After selecting three items, a stunning set is meticulously crafted, complete with all item details, creation date, and the time it took to put together.
 
-home page :
 
-number of items(cloths, and sets) that you can choose render auto from redux. => onClick(shoes,shirt,pants) let you choose items => and navigate you to next item sort algorithm then sort by your preferences. when 3 items been choose set been crated with all items data, date of creation and time it took.
+![](https://github.com/vovaberdi/clothesAppMission/blob/main/public/Screen%20Shot%202023-07-31%20at%2012.16.22.png)
+
+
+![](https://github.com/vovaberdi/clothesAppMission/blob/main/public/Screen%20Shot%202023-07-31%20at%2012.16.31.png)
+
+
+![](https://github.com/vovaberdi/clothesAppMission/blob/main/public/Screen%20Shot%202023-07-31%20at%2012.16.36.png)
