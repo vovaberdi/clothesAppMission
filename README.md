@@ -1,4 +1,7 @@
 # Getting Started with Create React App
+
+https://celadon-macaron-f64148.netlify.app
+
 Mobile-Optimized Design for a Superior User Experience | Dark Mode Supported
 Welcome to our mobile-exclusive website, where seamless navigation and a sleek design ensure a delightful user experience. Embracing modern aesthetics, we recommend you explore our website in dark mode, conveniently accessible from the left side of the menu.
 
